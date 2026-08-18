@@ -8,6 +8,12 @@
 
 **Input**: User description: "Support for Overdue Todo Items - As a todo application user, I want to easily identify and distinguish overdue tasks in my todo list, so that I can prioritize my work and quickly see which tasks are past their due date. Users need a clear, visual way to identify which todos have not been completed by their due date. This feature must include automated tests covering the overdue determination logic and its display, following the existing Jest patterns in the repository."
 
+## Clarifications
+
+### Session 2026-08-18
+
+- Q: What form should the overdue visual indicator take? → A: A text badge/label (e.g., "Overdue") in the existing danger (red) color.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - See which todos are overdue at a glance (Priority: P1)
@@ -72,7 +78,7 @@ As a user, I want the overdue indicator to reflect the current due date whenever
 - **FR-001**: System MUST determine a todo to be overdue when its due date is earlier than the current date AND its status is incomplete.
 - **FR-002**: System MUST NOT mark a todo as overdue if it has no due date set.
 - **FR-003**: System MUST NOT mark a todo as overdue if its status is complete, regardless of its due date.
-- **FR-004**: System MUST display a clearly visible, distinct visual indicator on each todo determined to be overdue in the todo list view.
+- **FR-004**: System MUST display a clearly visible, distinct visual indicator on each todo determined to be overdue in the todo list view, in the form of a text badge/label reading "Overdue" rendered in the existing danger (red) color, so the status is not conveyed by color alone.
 - **FR-005**: System MUST re-evaluate a todo's overdue status whenever its due date or completion status changes (create, edit, toggle complete/incomplete), without requiring a page refresh.
 - **FR-006**: System MUST treat a todo due on the current date as not overdue; a todo becomes overdue starting the day after its due date.
 - **FR-007**: System MUST determine overdue status using calendar dates only (no time-of-day comparison), consistent with due dates having no time component.
@@ -94,6 +100,6 @@ As a user, I want the overdue indicator to reflect the current due date whenever
 ## Assumptions
 
 - "Today" is determined by the date on the device displaying the todo list (client-side date), consistent with this being a single-user, non-collaborative application.
-- The overdue indicator is a visual treatment only (e.g., color, label, or icon) applied within the existing todo list/card layout; it does not change sort order, filtering, or introduce a separate overdue view.
+- The overdue indicator is a text badge/label ("Overdue") in the existing danger (red) color, applied within the existing todo list/card layout; it does not change sort order, filtering, or introduce a separate overdue view.
 - Due dates continue to be stored and compared as calendar dates without a time component, matching current data model behavior.
 - No new persisted data is required; overdue status is computed on the fly from existing `dueDate` and `completed` fields.
