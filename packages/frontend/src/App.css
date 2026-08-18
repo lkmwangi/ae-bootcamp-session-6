@@ -366,6 +366,22 @@ p {
   color: var(--text-secondary);
 }
 
+.todo-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.todo-badge-overdue {
+  background-color: var(--danger-color);
+  /* --bg-primary (not white) keeps text contrast >= 4.5:1 against --danger-color in both themes */
+  color: var(--bg-primary);
+}
+
 .todo-actions {
   display: flex;
   gap: 8px;
